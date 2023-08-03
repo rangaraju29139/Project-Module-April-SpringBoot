@@ -1,6 +1,7 @@
 package com.scaler.springboot1.task;
 
 
+import com.scaler.springboot1.task.dtos.CreateTaskDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,8 @@ public class TaskController {
         return ResponseEntity.ok(tasks);
     }
    @PostMapping("")
-    ResponseEntity<Task> createTask(@RequestBody Task task) {
-        var createdTask = tasksService.createTask(task);
+    ResponseEntity<Task> createTask(@RequestBody CreateTaskDTO createTaskDTO) {
+        var createdTask = tasksService.createTask(createTaskDTO.getName(),createTaskDTO.getDueDate());
         return ResponseEntity.ok(createdTask);
     }
    @GetMapping("/{id}")
