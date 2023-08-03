@@ -10,22 +10,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
-  private final TasksService tasksService;
+    private final TasksService tasksService;
     public TaskController(TasksService tasksService) {
         this.tasksService = tasksService;
     }
 
-  @GetMapping("")
+    @GetMapping("")
     ResponseEntity<List<Task>> getAllTasks() {
         var tasks = tasksService.getAllTasks();
         return ResponseEntity.ok(tasks);
     }
+
    @PostMapping("")
     ResponseEntity<Task> createTask(@RequestBody CreateTaskDTO createTaskDTO) {
         var createdTask = tasksService.createTask(createTaskDTO.getName(),createTaskDTO.getDueDate());
         return ResponseEntity.ok(createdTask);
     }
-   @GetMapping("/{id}")
+
+    @GetMapping("/{id}")
     ResponseEntity<Task> getTaskById(@PathVariable("id") Integer id) {
         var task = tasksService.getTaskById(id);
         return ResponseEntity.ok(task);
