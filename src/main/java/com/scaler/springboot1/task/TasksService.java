@@ -28,9 +28,9 @@ public class TasksService {
 
         throw new TaskNotFoundException(id);
     }
-
-    public Task createTask(String name, Date dueDate) {
-       Task task = new Task(nextTaskId++, name, dueDate, false);
+    // usage of dto
+    public Task createTask(String name , Date dueDate) {
+        Task task = new Task(nextTaskId++,name,dueDate,false);
         taskList.add(task);
         return task;
     }

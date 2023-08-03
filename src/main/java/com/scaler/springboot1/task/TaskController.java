@@ -20,15 +20,10 @@ public class TaskController {
         var tasks = tasksService.getAllTasks();
         return ResponseEntity.ok(tasks);
     }
-//    @PostMapping("")
-//    ResponseEntity<Task> createTask(@RequestBody Task task) {
-//        var createdTask = tasksService.createTask(task);
-//        return ResponseEntity.ok(createdTask);
-//    }
 
-    @PostMapping("")
+   @PostMapping("")
     ResponseEntity<Task> createTask(@RequestBody CreateTaskDTO createTaskDTO) {
-        var createdTask = tasksService.createTask(createTaskDTO.getName(), createTaskDTO.getDueDate());
+        var createdTask = tasksService.createTask(createTaskDTO.getName(),createTaskDTO.getDueDate());
         return ResponseEntity.ok(createdTask);
     }
 
